@@ -1,9 +1,11 @@
 <template>
     <div class="disc p-3 text-center">
         <div class="p-3">
-            <img class="img-fluid mb-3" :src="discs.poster" :alt="disc.name" />
+            <!-- la proprietà è di disc, l'oggetto che ho passato dal main, title perchè la proprietà name non esiste -->
+            <img class="img-fluid mb-3" :src="disc.poster" :alt="disc.title" />
             <p class="title text-uppercase fw-bold">{{ disc.title }}</p>
-            <p class="author lead mb-0">{ disc.author }</p>
+            <!-- doppia graffa -->
+            <p class="author lead mb-0">{{ disc.author }}</p>
             <p class="year">{{ disc.year }}</p>
         </div>
     </div>
@@ -12,8 +14,9 @@
 <script>
 export default {
     name: "Disc",
+    // disc è un oggetto non una stringa
     props: {
-        disc: String,
+        disc: Object,
     },
 };
 </script>

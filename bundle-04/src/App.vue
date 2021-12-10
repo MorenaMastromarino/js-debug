@@ -1,8 +1,10 @@
 <template>
     <div id="app">
-        <Header :genres="genresList" :authors="authorsList" @changedGenre="startGenreSearch" @chaangedAuthor="startAuthorSearch" />
+        <!-- aggiustato nome funzione changedAuthor -->
+        <Header :genres="genresList" :authors="authorsList" @changedGenre="startGenreSearch" @changedAuthor="startAuthorSearch"/>
 
-        <Main :selectedGenre="genreToSearch" :selectedAuthor="authorToSearch" @genresAndAuthorsReady="getGenresAndAuthorsList" />
+        <Main @genresAndAuthorsReady="getGenresAndAuthorsList" :selectedGenre="genreToSearch" :selectedAuthor="authorToSearch"/>
+         
     </div>
 </template>
 
@@ -26,13 +28,18 @@ export default {
     },
     methods: {
         getGenresAndAuthorsList(allGenresAndAuthors) {
-            allGenresAndAuthors = {};
+            // allGenresAndAuthors = {};
+            // il parametro lo passo alla funzione dall'emit del main, è un oggetto che a come parametri i due array
+
             this.genresList = allGenresAndAuthors.genres;
             this.authorsList = allGenresAndAuthors.authors;
+
+
         },
         startGenreSearch(genreToSearch) {
             console.log(genreToSearch);
-            genreToSearch = "";
+            // genreToSearch = "";
+            // non resetto il valore prima di passarlo al main
             this.genreToSearch = genreToSearch;
         },
         startAuthorSearch(authorToSearch) {

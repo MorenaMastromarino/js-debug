@@ -4,14 +4,16 @@
             <img src="../assets/img/spotify-logo.png" alt="Spotify" />
         </div>
         <div>
+            <!-- aggiusto il nome della funzione emit con Genre e non Genere -->
             <select
                 v-model="genreFilter"
-                @change="$emit('changedGenere', genreFilter)"
+                @change="$emit('changedGenre', genreFilter)"
                 class="form-select mt-3"
             >
                 <option value="">Seleziona un genere</option>
+
                 <option
-                    v-for="(genre, index) in genres"
+                    v-for="(genre, index) in genres"                    
                     :key="index"
                     :value="genre"
                 >
@@ -31,8 +33,9 @@
                     :key="index"
                     :value="author"
                 >
-                    {{ genre }}
+                    {{ author }}
                 </option>
+                <!-- devo stampre l'autore e non il genere -->
             </select>
 
         </div>
@@ -41,7 +44,8 @@
 
 <script>
 export default {
-    name: "Haeder",
+    // header era scritto male
+    name: "Header",
     props: {
         genres: Array,
         authors: Array,

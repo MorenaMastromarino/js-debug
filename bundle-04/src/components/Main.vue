@@ -46,15 +46,19 @@ export default {
         axios
             .get("https://flynn.boolean.careers/exercises/api/array/music")
             .then((res) => {
-                let discs = {};
+                // let discs = {};
+                // ho array discs in data che poi riempio con il risultato della chiamata axios, creo questo oggetto vuoto e non lo uso, non serve
+
                 this.discs = res.data.response;
 
                 this.discs.forEach((disc) => {
-                    if (!this.discs.includes(disc.genre)) {
+                    // this.genres e non .discs, devo controllare che il genere non sia già stato inserito nell'array dei generi
+                    if (!this.genres.includes(disc.genre)) {
                         this.genres.push(disc.genre);
                     }
 
-                    if (!this.authors.includes(discs.author)) {
+                    // disc e non discs.author, è una proprietà del singolo oggetto
+                    if (!this.authors.includes(disc.author)) {
                         this.authors.push(disc.author);
                     }
                 });
