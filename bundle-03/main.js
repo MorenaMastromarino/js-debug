@@ -56,7 +56,7 @@ const cars = [
         manufacturer: 'Seat',
         model: 'Ibiza',
         type: 'metano'
-    }
+    },
     {
         manufacturer: 'Audi',
         model: 'R8',
@@ -64,14 +64,14 @@ const cars = [
     },
 ];
 
-const gasolineCars = cars.filter( (auto) >= auto.type === 'benzina');
+const gasolineCars = cars.filter( (auto) => auto.type.toLowerCase() === 'benzina');
 
 const dieselCars = cars.filter( (auto) => {
-    auto.type === 'diesel';
+    return auto.type.toLowerCase() === 'diesel';
 });
 
 const otherCars = cars.filter( (auto) => {
-    return auto.type !== 'benzina' || auto.type !== 'diesel';
+    return auto.type.toLowerCase() !== 'benzina' && auto.type.toLowerCase() !== 'diesel';
 });
 
 console.log('Auto a benzina');
@@ -84,3 +84,16 @@ console.log(dieselCars);
 
 console.log('Tutte le altre auto');
 console.log(otherCars);
+
+
+/*
+    1- Dato un array di oggetti, si creano tre diversi array che contengono solo alcuni degli oggetti dell'array iniziale in base a uno dei loro parametri (type)
+
+    2- Mancava una , dopo uno degli oggetti dell'array cars
+        quando crea array gasolineCars la freccia dell'arrow function era scritta al contrario
+        nell'arrow function con le graffe (per dieselCars) ci vuole sempre il return
+
+    3- Poichè il type negli array a volte è scritto con l'iniziale maiuscola, usiamo toLowerCase prima di confrontarlo
+        per l'array otherCars il type deve essere contemporaneamente diverso da entrambi quindi ci vuole && e non ||
+
+*/
